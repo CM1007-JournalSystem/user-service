@@ -41,6 +41,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO){
+        try{
         boolean isRegistered = userService.registerUser(userDTO);
 
         if(isRegistered){
@@ -48,6 +49,10 @@ public class UserController {
         }
         else
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists or couldn't be registered");
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Couldn't register user");
+        }
     }
 
     @GetMapping("/getAllUsers")
