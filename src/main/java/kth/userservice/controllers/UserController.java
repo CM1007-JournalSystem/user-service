@@ -41,12 +41,6 @@ public class UserController {
         return users.stream().map(User::UserToDTO).toList();
     }
 
-    @GetMapping("/getDoctorsAndStaff")
-    public List<UserDTO> getDoctorsAndStaff(){
-        List<User> users = userService.getDoctorsAndStaff();
-        return users.stream().map(User::UserToDTO).toList();
-    }
-
     @GetMapping("/getUserById/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable int id) {
         Optional<User> user = userService.getUserById(id);
