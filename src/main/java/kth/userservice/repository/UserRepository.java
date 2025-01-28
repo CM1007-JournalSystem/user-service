@@ -18,6 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAll();
 
-    Optional<User> getUserBykeycloak_id(UUID id);
+    Optional<User> getUserBykeycloakId(UUID id);
 
 }
