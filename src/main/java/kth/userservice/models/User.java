@@ -19,11 +19,9 @@ public class User {
     private String last_name;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private String password;
     private String email;
     private String phoneNr;
-    @Enumerated(EnumType.STRING)
-    private Role role; //PATIENT, DOCTOR, STAFF
+    private UUID keyCloakId;
 
     public UserDTO UserToDTO(){
         UserDTO userDTO = new UserDTO();
@@ -36,7 +34,7 @@ public class User {
         userDTO.setPassword(null);
         userDTO.setEmail(this.email);
         userDTO.setPhoneNr(this.phoneNr);
-        userDTO.setRole(this.role);
+        userDTO.setKeyCloakId(this.keyCloakId);
 
         return userDTO;
     }

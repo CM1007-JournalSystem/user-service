@@ -20,10 +20,8 @@ public class UserDTO {
     private String first_name;
     private String last_name;
     private Gender gender;
-    private String password;
     private String email;
     private String phoneNr;
-    private Role role; //PATIENT, DOCTOR, STAFF
 
     public User DTOtoUser(){
         User user = new User();
@@ -33,10 +31,10 @@ public class UserDTO {
         user.setFirst_name(this.first_name);
         user.setLast_name(this.last_name);
         user.setGender(this.gender);
-        user.setPassword(this.password);
         user.setEmail(this.email);
         user.setPhoneNr(this.phoneNr);
         user.setRole(this.role);
+        user.setKeyCloakId(this.keyCloakId);
         return user;
     }
 }

@@ -51,4 +51,8 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+
+    public Optional<User> getUserByKeyCloak(int id) {
+        return userRepository.getUserByKeyCloakId(id);
+    }
 }
