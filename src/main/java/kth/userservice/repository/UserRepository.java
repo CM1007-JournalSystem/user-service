@@ -18,6 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAll();
 
+    @Query("SELECT u FROM User u WHERE u.keycloak_id = :id")
     Optional<User> getUserBykeycloakId(UUID id);
 
 }
