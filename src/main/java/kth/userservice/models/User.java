@@ -1,10 +1,9 @@
 package kth.userservice.models;
 
-
 import jakarta.persistence.*;
 import kth.userservice.DTO.UserDTO;
 import lombok.Data;
-import java.lang.util;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -32,7 +31,6 @@ public class User {
         userDTO.setFirst_name(this.first_name);
         userDTO.setLast_name(this.last_name);
         userDTO.setGender(this.gender);
-        userDTO.setPassword(null);
         userDTO.setEmail(this.email);
         userDTO.setPhoneNr(this.phoneNr);
         userDTO.setKeyCloakId(this.keyCloakId);

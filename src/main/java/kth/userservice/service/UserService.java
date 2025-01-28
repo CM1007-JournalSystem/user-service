@@ -1,6 +1,6 @@
 package kth.userservice.service;
 
-import java.lang.util;
+import java.util.UUID;
 import kth.userservice.DTO.UserDTO;
 import kth.userservice.models.User;
 import kth.userservice.repository.UserRepository;

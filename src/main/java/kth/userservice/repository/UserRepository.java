@@ -1,6 +1,6 @@
 package kth.userservice.repository;
 
-import java.lang.util;
+import java.util.UUID;
 import kth.userservice.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

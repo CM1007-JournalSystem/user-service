@@ -1,6 +1,6 @@
 package kth.userservice.controllers;
 
-import java.lang.util;
+import java.util.UUID;
 import kth.userservice.DTO.UserDTO;
 import kth.userservice.models.User;
 import kth.userservice.service.UserService;
@@ -17,26 +17,6 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO) {
-        String username = userDTO.getUsername();
-        String password = userDTO.getPassword();
-
-        // Authenticate the user using the service
-        Optional<User> foundUser = userService.findByUsername(username);
-
-        if (foundUser.isPresent()) {
-            User currentUser = foundUser.get();
-            if (currentUser.getPassword().equals(password)) {
-                UserDTO userDTO1 = currentUser.UserToDTO();
-                return ResponseEntity.ok(userDTO1);
-            }
-        }
-        // Authentication fails, return a JSON object with an error message
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(null);
     }
 
     @PostMapping("/register")
