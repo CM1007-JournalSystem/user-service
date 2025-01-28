@@ -18,8 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAll();
 
-    List<User> findUsersByRoleIn(List<String> roles);
-
     Optional<User> getUserByKeyCloakId(UUID id);
 
 }

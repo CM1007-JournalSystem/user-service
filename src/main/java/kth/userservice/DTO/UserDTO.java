@@ -2,7 +2,6 @@ package kth.userservice.DTO;
 
 import java.util.UUID;
 import kth.userservice.models.Gender;
-import kth.userservice.models.Role;
 import kth.userservice.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
