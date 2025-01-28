@@ -32,7 +32,7 @@ public class UserDTO {
         user.setGender(this.gender);
         user.setEmail(this.email);
         user.setPhoneNr(this.phoneNr);
-        user.setkeycloak_id(this.keycloak_id);
+        user.setKeycloak_id(this.keycloak_id);
         return user;
     }
 }

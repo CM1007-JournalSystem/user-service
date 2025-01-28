@@ -33,7 +33,7 @@ public class User {
         userDTO.setGender(this.gender);
         userDTO.setEmail(this.email);
         userDTO.setPhoneNr(this.phoneNr);
-        userDTO.setkeycloak_id(this.keycloak_id);
+        userDTO.setKeycloak_id(this.keycloak_id);
 
         return userDTO;
     }
