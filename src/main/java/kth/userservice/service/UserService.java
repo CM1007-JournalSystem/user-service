@@ -50,6 +50,6 @@ public class UserService {
     }
 
     public Optional<User> getUserByKeyCloak(UUID id) {
-        return userRepository.getUserByKeyCloakId(id);
+        return userRepository.getUserBykeycloak_id(id);
     }
 }

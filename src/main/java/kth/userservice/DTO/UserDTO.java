@@ -20,7 +20,7 @@ public class UserDTO {
     private Gender gender;
     private String email;
     private String phoneNr;
-    private UUID keyCloakId;
+    private UUID keycloak_id;
 
     public User DTOtoUser(){
         User user = new User();
@@ -32,7 +32,7 @@ public class UserDTO {
         user.setGender(this.gender);
         user.setEmail(this.email);
         user.setPhoneNr(this.phoneNr);
-        user.setKeyCloakId(this.keyCloakId);
+        user.setkeycloak_id(this.keycloak_id);
         return user;
     }
 }

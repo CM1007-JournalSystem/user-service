@@ -52,9 +52,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
-    @GetMapping("/getUserByKeyCloak/{keyCloakId}")
-    public ResponseEntity<UserDTO> getUserByKeyCloak(@PathVariable UUID keyCloakId) {
-        Optional<User> user = userService.getUserByKeyCloak(keyCloakId);
+    @GetMapping("/getUserByKeyCloak/{keycloak_id}")
+    public ResponseEntity<UserDTO> getUserByKeyCloak(@PathVariable UUID keycloak_id) {
+        Optional<User> user = userService.getUserByKeyCloak(keycloak_id);
 
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get().UserToDTO()); // Assuming you have UserToDTO method

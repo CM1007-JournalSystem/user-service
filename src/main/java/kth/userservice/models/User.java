@@ -21,7 +21,7 @@ public class User {
     private Gender gender;
     private String email;
     private String phoneNr;
-    private UUID keyCloakId;
+    private UUID keycloak_id;
 
     public UserDTO UserToDTO(){
         UserDTO userDTO = new UserDTO();
@@ -33,7 +33,7 @@ public class User {
         userDTO.setGender(this.gender);
         userDTO.setEmail(this.email);
         userDTO.setPhoneNr(this.phoneNr);
-        userDTO.setKeyCloakId(this.keyCloakId);
+        userDTO.setkeycloak_id(this.keycloak_id);
 
         return userDTO;
     }
