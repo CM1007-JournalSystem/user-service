@@ -1,7 +1,6 @@
 package kth.userservice.repository;
 
-
-
+import java.lang.util;
 import kth.userservice.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -21,6 +20,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findUsersByRoleIn(List<String> roles);
 
-    Optional<User> getUserByKeyCloakId(int id);
+    Optional<User> getUserByKeyCloakId(UUID id);
 
 }

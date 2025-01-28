@@ -1,6 +1,6 @@
 package kth.userservice.service;
 
-
+import java.lang.util;
 import kth.userservice.DTO.UserDTO;
 import kth.userservice.models.User;
 import kth.userservice.repository.UserRepository;
@@ -52,7 +52,7 @@ public class UserService {
         return true;
     }
 
-    public Optional<User> getUserByKeyCloak(int id) {
+    public Optional<User> getUserByKeyCloak(UUID id) {
         return userRepository.getUserByKeyCloakId(id);
     }
 }

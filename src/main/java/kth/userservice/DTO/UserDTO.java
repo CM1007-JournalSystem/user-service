@@ -1,7 +1,6 @@
 package kth.userservice.DTO;
 
-
-
+import java.lang.util;
 import kth.userservice.models.Gender;
 import kth.userservice.models.Role;
 import kth.userservice.models.User;

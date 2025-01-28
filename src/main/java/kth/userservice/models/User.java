@@ -4,6 +4,7 @@ package kth.userservice.models;
 import jakarta.persistence.*;
 import kth.userservice.DTO.UserDTO;
 import lombok.Data;
+import java.lang.util;
 
 @Entity
 @Data

@@ -1,6 +1,6 @@
 package kth.userservice.controllers;
 
-
+import java.lang.util;
 import kth.userservice.DTO.UserDTO;
 import kth.userservice.models.User;
 import kth.userservice.service.UserService;
@@ -79,7 +79,7 @@ public class UserController {
     }
 
     @GetMapping("/getUserByKeyCloak/{keyCloakId}")
-    public ResponseEntity<UserDTO> getUserByKeyCloak(@PathVariable String keyCloakId) {
+    public ResponseEntity<UserDTO> getUserByKeyCloak(@PathVariable UUID keyCloakId) {
         Optional<User> user = userService.getUserByKeyCloak(keyCloakId);
 
         if (user.isPresent()) {
