@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -30,10 +32,10 @@ public class SecurityConfig{
                         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
         return http.build();
     }
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter (){
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
 
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwt -> {
             Collection<GrantedAuthority> authorities = jwt.getClaimAsStringList("roles").stream()
                     .map(SimpleGrantedAuthority::new)
@@ -41,5 +43,12 @@ public class SecurityConfig{
             return authorities;
         });
         return jwtAuthenticationConverter;
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        // Replace the URL with the issuer URI of your Keycloak instance
+        String issuerUri = "https://wc-iam.app.cloud.cbh.kth.se/realms/patientjournal";
+        return NimbusJwtDecoder.withJwkSetUri(issuerUri + "/protocol/openid-connect/certs").build();
     }
 }
