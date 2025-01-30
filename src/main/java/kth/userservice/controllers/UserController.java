@@ -6,6 +6,7 @@ import kth.userservice.models.User;
 import kth.userservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
+    @PreAuthorize("hasAnyRole('patient', 'doctor', 'staff')")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO){
         try{
         boolean isRegistered = userService.registerUser(userDTO);
@@ -36,12 +38,14 @@ public class UserController {
     }
 
     @GetMapping("/getAllUsers")
+    @PreAuthorize("hasAnyRole('patient', 'doctor', 'staff')")
     public List<UserDTO> getAllUsers(){
         List<User> users = userService.getAllUsers();
         return users.stream().map(User::UserToDTO).toList();
     }
 
     @GetMapping("/getUserById/{id}")
+    @PreAuthorize("hasAnyRole('patient', 'doctor', 'staff')")
     public ResponseEntity<UserDTO> getUserById(@PathVariable int id) {
         Optional<User> user = userService.getUserById(id);
 
@@ -53,6 +57,7 @@ public class UserController {
     }
 
     @GetMapping("/getUserByKeyCloak/{keycloak_id}")
+    @PreAuthorize("hasAnyRole('patient', 'doctor', 'staff')")
     public ResponseEntity<UserDTO> getUserByKeyCloak(@PathVariable UUID keycloak_id) {
         Optional<User> user = userService.getUserByKeyCloak(keycloak_id);
 
