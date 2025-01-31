@@ -50,6 +50,6 @@ public class SecurityConfig{
     public JwtDecoder jwtDecoder() {
         // Replace the URL with the issuer URI of your Keycloak instance
         String issuerUri = "https://wc-iam.app.cloud.cbh.kth.se/realms/patientjournal";
-        return NimbusJwtDecoder.withJwkSetUri(issuerUri + "/protocol/openid-connect/certs").build();
+        return NimbusJwtDecoder.withJwkSetUri(issuerUri).build();
     }
 }
