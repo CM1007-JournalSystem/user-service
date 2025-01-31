@@ -2,6 +2,7 @@ package kth.userservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,26 +31,9 @@ public class SecurityConfig{
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+                        .jwt(Customizer.withDefaults()));
+
         return http.build();
     }
 
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            Collection<GrantedAuthority> authorities = jwt.getClaimAsStringList("roles").stream()
-                    .map(SimpleGrantedAuthority::new)
-                    .collect(Collectors.toList());
-            return authorities;
-        });
-        return jwtAuthenticationConverter;
-    }
-
-    @Bean
-    public JwtDecoder jwtDecoder() {
-        // Replace the URL with the issuer URI of your Keycloak instance
-        String issuerUri = "https://wc-iam.app.cloud.cbh.kth.se/realms/patientjournal";
-        return NimbusJwtDecoder.withJwkSetUri(issuerUri).build();
-    }
 }
